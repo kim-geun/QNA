@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "800045723002",
+    "firebase_url": "https://qna-fde95.firebaseio.com",
+    "project_id": "qna-fde95",
+    "storage_bucket": "qna-fde95.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800045723002:android:0c81d235d5a312a94efac3",
+        "android_client_info": {
+          "package_name": "com.example.qna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800045723002-m377l9lp95eotqlh9h8tb2q1n5p6rv7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.qna",
+            "certificate_hash": "bca4ae824409efdf93edfa8cdb7dfe3296d7b96f"
+          }
+        },
+        {
+          "client_id": "800045723002-nuot2e0pk5n6ir2adjmuajp23sdljg05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAnUTTZ2E2mEDTIBNeZzkOyQtmGytbT20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800045723002-nuot2e0pk5n6ir2adjmuajp23sdljg05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
