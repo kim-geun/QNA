@@ -2,10 +2,12 @@ package com.example.qna;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,11 +21,14 @@ public class QuestionResultActivity extends AppCompatActivity {
     Spinner spinner;
     LinearLayout recommendLayout;
     TextView add_question_textview;
+    ImageButton toindex_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_result);
 
+        //spinner
         spinner = findViewById(R.id.question_result_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.category)
@@ -44,6 +49,7 @@ public class QuestionResultActivity extends AppCompatActivity {
             }
         });
 
+        //질문 추가
         recommendLayout = findViewById(R.id.question_result_recommend);
         add_question_textview = findViewById(R.id.question_result_add_question);
 
@@ -54,6 +60,15 @@ public class QuestionResultActivity extends AppCompatActivity {
                     recommendLayout.setVisibility(View.GONE);
                 else
                     recommendLayout.setVisibility(View.VISIBLE);
+            }
+        });
+
+        toindex_button = findViewById(R.id.question_result_toindex);
+        toindex_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuestionResultActivity.this, QuestionIndexActivity.class);
+                startActivity(intent);
             }
         });
     }
