@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QNA">
-        <activity android:name=".FindPasswordActivity"></activity>
+        <activity android:name=".ViewAnswerActivity"></activity>
+        <activity android:name=".FindPasswordActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".QuestionIndexActivity" />
         <activity android:name=".QuestionResultActivity" />
-        <activity android:name=".DailyQuestionActivity"></activity>
+        <activity android:name=".DailyQuestionActivity" />
         <activity android:name=".CategorySettingActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".IntroActivity">
@@ -24,8 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
