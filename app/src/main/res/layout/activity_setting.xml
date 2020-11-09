@@ -5,11 +5,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SettingActivity">
+    android:background="#ffffff"
+    tools:context=".SettingActivity"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dovemayo"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:text="환경설정"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/dark"
+        android:fontFamily="@font/dovemayo"
+        android:text="카테고리 재설정"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="로그아웃" />
+        android:layout_gravity="center"
+        android:backgroundTint="@color/dark"
+        android:fontFamily="@font/dovemayo"
+        android:text="로그아웃"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <Button
+        android:id="@+id/btnSignout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/dark"
+        android:fontFamily="@font/dovemayo"
+        android:text="회원탈퇴"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+
 </LinearLayout>

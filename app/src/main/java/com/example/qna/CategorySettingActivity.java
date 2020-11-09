@@ -1,5 +1,6 @@
 package com.example.qna;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,15 +9,28 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class CategorySettingActivity extends AppCompatActivity {
 
+    DatabaseReference dataRef;
+    FirebaseUser auth;
+    String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_setting);
-
+        auth = FirebaseAuth.getInstance().getCurrentUser();
+        uid = auth.getUid();
+        dataRef = FirebaseDatabase.getInstance().getReference("User");
         final CheckBox chk_love = (CheckBox)findViewById(R.id.chk_love);
         final CheckBox chk_etc = (CheckBox)findViewById(R.id.chk_etc);
         final CheckBox chk_relationship = (CheckBox)findViewById(R.id.chk_relationship);
@@ -41,7 +55,20 @@ public class CategorySettingActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"카테고리를 1개 이상 선택하세요",Toast.LENGTH_LONG).show();
                 }
                 else{
+                    dataRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            UserData user = snapshot.getValue(UserData.class);
+                            user.updateCategory(newCategory);
+                            dataRef.child(uid).removeValue();
+                            dataRef.child(uid).setValue(user);
+                            finish();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
+                        }
+                    });
                 }
             }
         });

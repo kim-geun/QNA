@@ -7,15 +7,16 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class UserData{ //UID로 구분 in firebase
-    public String UID;
+    public String uid;
     public ArrayList<String> category;
     public ArrayList<Question_list_data> dailyAnswer; // << Question Category, Question answer, Question date > , Answer>
-    public UserData() {
+    public UserData(String UID) {
+        this.uid = UID;
         category = new ArrayList();
         dailyAnswer = new ArrayList();
     }
     public UserData(String UID,ArrayList<String> category) {
-        this.UID = UID;
+        this.uid = UID;
     this.category = category;
     this.dailyAnswer = new ArrayList();
     }

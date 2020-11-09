@@ -28,13 +28,11 @@
         android:textSize="30dp"
         android:text="카테고리/질문"/>
 
-
     <EditText
         android:layout_width="330dp"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:id="@+id/daily_question_answer"
         android:layout_below="@+id/daily_question_question"
-        android:background="@color/very_light"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/dovemayo"
         android:textSize="30dp"
@@ -58,7 +56,8 @@
             android:fontFamily="@font/dovemayo"
             android:textSize="30dp"
             android:backgroundTint="@color/dark"
-            android:text="목록"/>
+            android:text="목록"
+            android:textStyle="bold"/>
 
         <Button
             android:layout_width="110dp"
@@ -70,7 +69,8 @@
             android:layout_marginLeft="30dp"
             android:textSize="30dp"
             android:backgroundTint="@color/dark"
-            android:text="제출"/>
+            android:text="제출"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 

@@ -18,8 +18,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         // Firebase
         mAuth=FirebaseAuth.getInstance();
         mDatabase=FirebaseDatabase.getInstance();
-        mRef=mDatabase.getReference();
+        mRef=mDatabase.getReference("User");
 
         // SharedPreference
         //preferences=getSharedPreferences("autologin", Activity.MODE_PRIVATE);
@@ -130,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                             updateUIwithEmailCheck(user);
                         }
                         else{
-
+                            showToast("아이디와 비밀번호를 확인해주세요");
                         }
                     }
                 });
@@ -143,14 +149,33 @@ public class LoginActivity extends AppCompatActivity {
         autoLogin.putString("inputPw",pw);
         autoLogin.commit();
     }
-
+    //category reset & skip
     private void updateUIwithEmailCheck(FirebaseUser user){
         if(user!=null){
             boolean emailVerified=user.isEmailVerified();
             if(emailVerified){
-                Intent intent=new Intent(LoginActivity.this,CategorySettingActivity.class);
-                startActivity(intent);
-                finish();
+                mRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        HashMap<String,Object> hashMap = (HashMap<String, Object>) snapshot.getValue();
+                        ArrayList<String> category = (ArrayList<String>) hashMap.get("category");
+                        if(category.size()>0){
+                            Intent intent=new Intent(LoginActivity.this,DailyQuestionActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{
+                            Intent intent=new Intent(LoginActivity.this,CategorySettingActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
             else{
                 mAuth.signOut();
