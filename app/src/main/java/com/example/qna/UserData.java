@@ -17,8 +17,8 @@ public class UserData{ //UID로 구분 in firebase
     }
     public UserData(String UID,ArrayList<String> category) {
         this.uid = UID;
-    this.category = category;
-    this.dailyAnswer = new ArrayList();
+        this.category = category;
+        this.dailyAnswer = new ArrayList();
     }
     public void updateCategory(ArrayList<String> newCategory){ // 유저 카테고리 업데이트
         category.clear();

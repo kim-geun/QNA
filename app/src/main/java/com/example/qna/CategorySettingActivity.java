@@ -3,6 +3,7 @@ package com.example.qna;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -69,6 +70,8 @@ public class CategorySettingActivity extends AppCompatActivity {
 
                         }
                     });
+                    Intent intent = new Intent(CategorySettingActivity.this, DailyQuestionActivity.class);
+                    startActivity(intent);
                 }
             }
         });
