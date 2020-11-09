@@ -62,13 +62,14 @@
             card_view:cardCornerRadius="20dp"
             android:layout_weight="1"
             card_view:cardUseCompatPadding="true">
+
             <CheckBox
+                android:id="@+id/chk_hobby"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:gravity="center"
                 android:button="@drawable/chk_hobby"
-                android:id="@+id/chk_hobby" />
+                android:gravity="center" />
 
         </androidx.cardview.widget.CardView>
 
@@ -81,13 +82,14 @@
             card_view:cardCornerRadius="20dp"
             android:layout_weight="1"
             card_view:cardUseCompatPadding="true">
+
             <CheckBox
+                android:id="@+id/chk_relationship"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:gravity="center"
                 android:button="@drawable/chk_relationship"
-                android:id="@+id/chk_relationship" />
+                android:gravity="center" />
 
         </androidx.cardview.widget.CardView>
 
@@ -126,13 +128,14 @@
             card_view:cardCornerRadius="20dp"
             android:layout_weight="1"
             card_view:cardUseCompatPadding="true">
+
             <CheckBox
+                android:id="@+id/chk_movie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:gravity="center"
                 android:button="@drawable/chk_movie"
-                android:id="@+id/chk_movie" />
+                android:gravity="center" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -172,6 +175,7 @@
             android:backgroundTint="@color/dark"
             android:layout_gravity="center"
             android:textStyle="bold"
+            android:id="@+id/btn_submit"
             >
         </Button>
 
