@@ -43,7 +43,7 @@ public class SignupActivity extends AppCompatActivity {
     public void initFirebase(){
         mAuth=FirebaseAuth.getInstance();
         mDatabase=FirebaseDatabase.getInstance();
-        mRef=mDatabase.getReference("User");
+        mRef=mDatabase.getReference("Users");
     }
 
     public void initView(){
@@ -81,7 +81,7 @@ public class SignupActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             FirebaseUser user=mAuth.getCurrentUser();
                             String uid=user.getUid();
-                            mDatabase.getReference().child("User").child(uid).setValue(new UserData(uid));
+                            mDatabase.getReference().child("Users").child(uid).setValue(new UserData(uid));
                             sendEmail(user);
                             updateUI(user);
                         }

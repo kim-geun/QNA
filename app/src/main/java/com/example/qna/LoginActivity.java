@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         // Firebase
         mAuth=FirebaseAuth.getInstance();
         mDatabase=FirebaseDatabase.getInstance();
-        mRef=mDatabase.getReference("User");
+        mRef=mDatabase.getReference("Users");
 
         // SharedPreference
         //preferences=getSharedPreferences("autologin", Activity.MODE_PRIVATE);

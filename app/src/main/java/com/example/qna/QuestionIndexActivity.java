@@ -29,7 +29,7 @@ public class QuestionIndexActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
     QuestionIdxRVAdapter adapter;
-    DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("User");
+    DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("Users");
     String uid = new String();
     ArrayList<UserData.Question_list_data> question_list_data = new ArrayList<>();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

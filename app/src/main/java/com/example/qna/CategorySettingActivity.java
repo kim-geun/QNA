@@ -31,7 +31,7 @@ public class CategorySettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category_setting);
         auth = FirebaseAuth.getInstance().getCurrentUser();
         uid = auth.getUid();
-        dataRef = FirebaseDatabase.getInstance().getReference("User");
+        dataRef = FirebaseDatabase.getInstance().getReference("Users");
         final CheckBox chk_love = (CheckBox)findViewById(R.id.chk_love);
         final CheckBox chk_etc = (CheckBox)findViewById(R.id.chk_etc);
         final CheckBox chk_relationship = (CheckBox)findViewById(R.id.chk_relationship);
