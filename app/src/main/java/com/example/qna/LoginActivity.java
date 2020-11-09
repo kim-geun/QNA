@@ -64,8 +64,6 @@ public class LoginActivity extends AppCompatActivity {
     public void initAccount(){
         if(mAuth.getCurrentUser()!=null){
             mAuth.signOut();
-            // Intent intent=new Intent(LoginActivity.this,CategorySettingActivity.class);
-            // startActivity(intent);
         }
         else if (loginId != null && loginPw != null) {
             // loginAccount(loginId, loginPw);
