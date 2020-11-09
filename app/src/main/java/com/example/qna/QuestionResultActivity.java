@@ -5,12 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -21,12 +29,20 @@ public class QuestionResultActivity extends AppCompatActivity {
     Spinner spinner;
     LinearLayout recommendLayout;
     TextView add_question_textview;
+    EditText recommend;
     ImageButton toindex_button;
+    Button submit;
+
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_result);
+
+        // Initialize Firebase variables
+        initFirebase();
 
         //spinner
         spinner = findViewById(R.id.question_result_spinner);
@@ -56,10 +72,18 @@ public class QuestionResultActivity extends AppCompatActivity {
         add_question_textview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(recommendLayout.getVisibility()==View.VISIBLE)
+                if(recommendLayout.getVisibility()==View.VISIBLE){
+                    Animation animation = new AlphaAnimation(1, 0);
+                    animation.setDuration(500);
                     recommendLayout.setVisibility(View.GONE);
-                else
+                    recommendLayout.setAnimation(animation);
+                }
+                else{
+                    Animation animation = new AlphaAnimation(0, 1);
+                    animation.setDuration(500);
                     recommendLayout.setVisibility(View.VISIBLE);
+                    recommendLayout.setAnimation(animation);
+                }
             }
         });
 
@@ -71,5 +95,31 @@ public class QuestionResultActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        submit = findViewById(R.id.question_result_submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String category = spinner.getSelectedItem().toString();         //spinner category 가져오기
+                recommend = findViewById(R.id.question_result_recomment_text);  //recommend 버튼 연결
+                String recommend_string = recommend.getText().toString();       //recommend text 가져오기
+                if (recommend_string.length() == 0) {
+                    //공백일 때 처리할 내용
+                    Toast.makeText(getApplicationContext(), "추가할 질문을 입력하세요.", Toast.LENGTH_LONG).show();
+                } else {
+                    //공백이 아닐 때 처리할 내용
+                    addQuestion();
+                }
+            }
+        });
+    }
+
+    public void addQuestion(){
+
+    }
+
+    public void initFirebase(){
+        mDatabase=FirebaseDatabase.getInstance();
+        mRef=mDatabase.getReference();
     }
 }

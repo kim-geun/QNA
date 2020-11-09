@@ -22,7 +22,7 @@ public class QuestionIndexActivity extends AppCompatActivity {
     QuestionIdxRVAdapter adapter;
     DatabaseReference dataRef;
     String uid = new String();
-    UserData userData = new UserData();
+    UserData userData = new UserData(uid);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
