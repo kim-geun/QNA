@@ -109,11 +109,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Find pw - Not yet
+        // Find pw
         btnFind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(LoginActivity.this,FindPasswordActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QNA">
-        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".FindPasswordActivity"></activity>
+        <activity android:name=".SignupActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".QuestionIndexActivity" />
         <activity android:name=".QuestionResultActivity" />
