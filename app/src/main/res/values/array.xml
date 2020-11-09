@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category">
+        <item>연애&amp;결혼</item>
+        <item>영화&amp;TV</item>
+        <item>음악</item>
+        <item>인간관계</item>
+        <item>건강&amp;운동</item>
+        <item>기타</item>
+    </string-array>
+</resources>

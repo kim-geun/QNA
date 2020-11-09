@@ -14,16 +14,15 @@
         <activity android:name=".SettingActivity" />
         <activity android:name=".QuestionIndexActivity" />
         <activity android:name=".QuestionResultActivity" />
-        <activity android:name=".DailyQuestionActivity">            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        <activity android:name=".DailyQuestionActivity"/>
         <activity android:name=".CategorySettingActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".IntroActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"> <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
     </application>
 

@@ -5,7 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_vertical"
     tools:context=".SignupActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dovemayo"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:text="회원가입"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
 
     <EditText
         android:id="@+id/editId"
@@ -13,7 +26,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:fontFamily="@font/dovemayo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="20dp"
         android:hint="이메일" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
 
     <EditText
         android:id="@+id/editPw"
@@ -21,17 +42,39 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:fontFamily="@font/dovemayo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="20dp"
         android:hint="비밀번호" />
 
     <Button
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_height="60dp"
+        android:fontFamily="@font/dovemayo"
+        android:backgroundTint="@color/dark"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="20dp"
+        android:text="회원가입" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
 
     <TextView
         android:id="@+id/textMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/dovemayo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:textColor="@color/pink"
         android:text="" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
 </LinearLayout>

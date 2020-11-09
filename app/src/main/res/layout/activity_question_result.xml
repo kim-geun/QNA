@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionResultActivity"
-    android:paddingLeft="40dp">
+    tools:context=".QuestionResultActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,15 +23,14 @@
         android:orientation="horizontal"
         android:id="@+id/question_result_linearlayout"
         android:layout_below="@+id/question_result_comment"
-        android:paddingLeft="30dp"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="30dp">
 
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/question_result_ratingstar"
             android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
             android:numStars="5"
             android:rating="0"
             android:stepSize="0.5"
@@ -59,6 +57,50 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:text="추가하고 싶은 질문있으신가요?"/>
+
+    <LinearLayout
+        android:id="@+id/question_result_recommend"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:background="@color/very_light"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/question_result_add_question"
+        android:gravity="center">
+
+        <Spinner
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/question_result_spinner"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="140dp"
+            android:hint="추천할 질문을 써주세요!"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/dovemayo"
+            android:textSize="26dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제출"
+            android:fontFamily="@font/dovemayo"
+            android:textSize="20dp"
+            android:textColor="@color/very_light"
+            android:backgroundTint="@color/dark"
+            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"/>
+
+
+    </LinearLayout>
 
 
 
