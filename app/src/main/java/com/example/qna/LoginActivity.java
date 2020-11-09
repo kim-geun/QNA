@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                             updateUIwithEmailCheck(user);
                         }
                         else{
-
+                            showToast("아이디와 비밀번호를 확인해주세요");
                         }
                     }
                 });
