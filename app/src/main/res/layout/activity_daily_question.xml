@@ -57,6 +57,7 @@
             android:textSize="30dp"
             android:backgroundTint="@color/dark"
             android:text="목록"
+            android:textColor="#ffffff"
             android:textStyle="bold"/>
 
         <Button
@@ -68,6 +69,7 @@
             android:fontFamily="@font/dovemayo"
             android:layout_marginLeft="30dp"
             android:textSize="30dp"
+            android:textColor="#ffffff"
             android:backgroundTint="@color/dark"
             android:text="제출"
             android:textStyle="bold"/>
