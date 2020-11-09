@@ -4,7 +4,6 @@ import android.util.Pair;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class UserData{ //UID로 구분 in firebase
     public String uid;
@@ -33,6 +32,8 @@ public class UserData{ //UID로 구분 in firebase
     public void addNewAnswer(QuestionData questionData, String answer, String date){ // 새로운 답변을 했을 때 데이터 추가 (질문,답변,날짜)
         dailyAnswer.add(new Question_list_data(questionData,answer,date));
     }
+
+
     class Question_list_data implements Serializable{ // list wrapper 용 데이터
         QuestionData questionData;
         String answer;
