@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionResultActivity">
+    tools:context=".QuestionResultActivity"
+    android:paddingLeft="40dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/question_result_comment"
+        android:fontFamily="@font/dovemayo"
+        android:layout_marginTop="160dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="40dp"
+        android:text="질문은 어떠셨나요?"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/question_result_linearlayout"
+        android:layout_below="@+id/question_result_comment"
+        android:paddingLeft="30dp"
+        android:layout_centerHorizontal="true">
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/question_result_ratingstar"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="0.5"
+            />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:id="@+id/question_result_toindex"
+            android:layout_toRightOf="@+id/question_result_ratingstar"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/arrow_next"
+            android:backgroundTint="@color/white"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/question_result_add_question"
+        android:layout_below="@+id/question_result_linearlayout"
+        android:fontFamily="@font/dovemayo"
+        android:textSize="26dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="추가하고 싶은 질문있으신가요?"/>
+
+
+
+</RelativeLayout>
