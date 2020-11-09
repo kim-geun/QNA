@@ -5,12 +5,12 @@ import java.util.ArrayList;
 
 public class QuestionData implements Serializable {
     String id;
-    ArrayList<String> category;
+    String category;
     String context;
     double starRate;
     int rateNum;
 
-    public QuestionData(String id, ArrayList<String> category, String context, double starRate, int rateNum) {
+    public QuestionData(String id, String category, String context, double starRate, int rateNum) {
         this.id = id;
         this.category = category;
         this.context = context;
@@ -22,9 +22,5 @@ public class QuestionData implements Serializable {
         double tmpStarRateAll = starRate*rateNum + addStarRate;
         rateNum++;
         starRate = tmpStarRateAll/rateNum;
-    }
-    public void updateCategory(ArrayList<String> newCategory){
-        category.clear();
-        category.addAll(newCategory);
     }
 }
