@@ -14,12 +14,12 @@ public class CategorySettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_setting);
 
-        final CheckBox cb1 = (CheckBox)findViewById(R.id.chk_love);
-        final CheckBox cb2 = (CheckBox)findViewById(R.id.chk_hobby);
-        final CheckBox cb3 = (CheckBox)findViewById(R.id.chk_relationship);
-        final CheckBox cb4 = (CheckBox)findViewById(R.id.chk_sports);
-        final CheckBox cb5 = (CheckBox)findViewById(R.id.chk_movie);
-        final CheckBox cb6 = (CheckBox)findViewById(R.id.chk_music);
+        final CheckBox chk_love = (CheckBox)findViewById(R.id.chk_love);
+        final CheckBox chk_hobby = (CheckBox)findViewById(R.id.chk_hobby);
+        final CheckBox chk_relationship = (CheckBox)findViewById(R.id.chk_relationship);
+        final CheckBox chk_sports = (CheckBox)findViewById(R.id.chk_sports);
+        final CheckBox chk_movie = (CheckBox)findViewById(R.id.chk_movie);
+        final CheckBox chk_music = (CheckBox)findViewById(R.id.chk_music);
 
 
         Button b = (Button)findViewById(R.id.btn_submit);
