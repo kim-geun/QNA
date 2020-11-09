@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class CategorySettingActivity extends AppCompatActivity {
 
@@ -27,7 +30,19 @@ public class CategorySettingActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList<String> newCategory = new ArrayList<String>();
+                if(chk_love.isChecked() == true) newCategory.add("love");
+                if(chk_hobby.isChecked() == true) newCategory.add("hobby");
+                if(chk_relationship.isChecked() == true) newCategory.add("relationship");
+                if(chk_sports.isChecked() == true) newCategory.add("sports");
+                if(chk_movie.isChecked() == true) newCategory.add("movie");
+                if(chk_music.isChecked() == true) newCategory.add("music");
+                if(newCategory.size() == 0){
+                    Toast.makeText(getApplicationContext(),"카테고리를 1개 이상 선택하세요",Toast.LENGTH_LONG).show();
+                }
+                else{
 
+                }
             }
         });
 
