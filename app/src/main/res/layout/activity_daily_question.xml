@@ -37,6 +37,7 @@
         android:fontFamily="@font/dovemayo"
         android:textSize="30dp"
         android:hint="어떻게 생각하시나요?"
+        android:background="@color/very_light"
         android:textAlignment="center"/>
 
     <LinearLayout
