@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="beige_200">#F9EFCE</color>
-    <color name="beige_500">#DCCCAC</color>
-    <color name="beige_700">#CCBA97</color>
-    <color name="point_light">#C8A28B</color>
-    <color name="point_dark">#6C4747</color>
+    <color name="very_light">#E0D8CB</color>
+    <color name="light">#DED3BF</color>
+    <color name="modern">#CBC4BA</color>
+    <color name="dark">#6D6562</color>
+    <color name="very_dark">#3F3735</color>
     <color name="pink">#F5C0AE</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
