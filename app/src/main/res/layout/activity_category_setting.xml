@@ -64,11 +64,11 @@
             card_view:cardUseCompatPadding="true">
 
             <CheckBox
-                android:id="@+id/chk_hobby"
+                android:id="@+id/chk_music"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:button="@drawable/chk_hobby"
+                android:button="@drawable/chk_music"
                 android:gravity="center" />
 
         </androidx.cardview.widget.CardView>
@@ -152,8 +152,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
-                android:button="@drawable/chk_music"
-                android:id="@+id/chk_music" />
+                android:button="@drawable/chk_etc"
+                android:id="@+id/chk_etc" />
         </androidx.cardview.widget.CardView>
 
 

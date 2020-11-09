@@ -18,7 +18,7 @@ public class CategorySettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category_setting);
 
         final CheckBox chk_love = (CheckBox)findViewById(R.id.chk_love);
-        final CheckBox chk_hobby = (CheckBox)findViewById(R.id.chk_hobby);
+        final CheckBox chk_etc = (CheckBox)findViewById(R.id.chk_etc);
         final CheckBox chk_relationship = (CheckBox)findViewById(R.id.chk_relationship);
         final CheckBox chk_sports = (CheckBox)findViewById(R.id.chk_sports);
         final CheckBox chk_movie = (CheckBox)findViewById(R.id.chk_movie);
@@ -32,7 +32,7 @@ public class CategorySettingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ArrayList<String> newCategory = new ArrayList<String>();
                 if(chk_love.isChecked() == true) newCategory.add("love");
-                if(chk_hobby.isChecked() == true) newCategory.add("hobby");
+                if(chk_etc.isChecked() == true) newCategory.add("etc");
                 if(chk_relationship.isChecked() == true) newCategory.add("relationship");
                 if(chk_sports.isChecked() == true) newCategory.add("sports");
                 if(chk_movie.isChecked() == true) newCategory.add("movie");
