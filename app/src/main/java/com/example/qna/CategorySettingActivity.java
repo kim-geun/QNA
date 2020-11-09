@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -60,6 +61,7 @@ public class CategorySettingActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             UserData user = snapshot.getValue(UserData.class);
+                            Log.d("로그로그", String.valueOf(user!=null));
                             user.updateCategory(newCategory);
                             dataRef.child(uid).removeValue();
                             dataRef.child(uid).setValue(user);

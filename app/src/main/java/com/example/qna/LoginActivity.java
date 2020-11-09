@@ -159,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         HashMap<String,Object> hashMap = (HashMap<String, Object>) snapshot.getValue();
                         ArrayList<String> category = (ArrayList<String>) hashMap.get("category");
-                        if(category.size()>0){
+                        if(category!= null&&category.size()>0){
                             Intent intent=new Intent(LoginActivity.this,DailyQuestionActivity.class);
                             startActivity(intent);
                             finish();

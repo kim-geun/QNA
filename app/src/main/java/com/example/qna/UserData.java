@@ -9,6 +9,12 @@ public class UserData{ //UID로 구분 in firebase
     public String uid;
     public ArrayList<String> category;
     public ArrayList<Question_list_data> dailyAnswer; // << Question Category, Question answer, Question date > , Answer>
+    public  UserData(){
+        this.uid = new String();
+        category = new ArrayList();
+        dailyAnswer = new ArrayList();
+
+    }
     public UserData(String UID) {
         this.uid = UID;
         category = new ArrayList();
