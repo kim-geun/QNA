@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         mRef=mDatabase.getReference();
 
         // SharedPreference
-        // preferences=getSharedPreferences("autologin", Activity.MODE_PRIVATE);
+        //preferences=getSharedPreferences("autologin", Activity.MODE_PRIVATE);
         //loginId=preferences.getString("inputId",null);
         //loginPw=preferences.getString("inputPw",null);
     }
