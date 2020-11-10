@@ -63,10 +63,10 @@ public class DailyQuestionActivity extends AppCompatActivity {
                 else{
                     q_num = 1; // 아무것도 없으면 1번 질문;
                 }
-                int category_num = userData.category.size() - 1;
+                int category_num = userData.category.size();
                 Random random = new Random();
                 random.setSeed(System.currentTimeMillis()); // 랜덤 시드
-                int category_selected = category_num==1? 0:random.nextInt(category_num);
+                int category_selected = random.nextInt(category_num);
                 dataRef.child(QuestionData.eToK(userData.category.get(category_selected))).child(Integer.toString(q_num)).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

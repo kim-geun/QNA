@@ -40,8 +40,8 @@ public class QuestionIndexActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question_index);
         uid = user.getUid();
         recyclerView = findViewById(R.id.question_index_recyclerview);
+        recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        layoutManager.setStackFromEnd(true);
         adapter = new QuestionIdxRVAdapter(question_list_data);
         adapter.setOnItemClickListener(new QuestionIdxRVAdapter.OnItemClickListener() {
             @Override
