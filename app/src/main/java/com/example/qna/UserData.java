@@ -55,6 +55,7 @@ public class UserData{ //UID로 구분 in firebase
         hashMap.put("uid",uid);
         hashMap.put("category",category);
         hashMap.put("dailyAnswer",dailyAnswer);
+        hashMap.put("day",day);
         return hashMap;
     }
 }

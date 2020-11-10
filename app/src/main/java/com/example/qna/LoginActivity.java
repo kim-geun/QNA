@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
@@ -61,10 +64,10 @@ public class LoginActivity extends AppCompatActivity {
         mDatabase=FirebaseDatabase.getInstance();
         mRef=mDatabase.getReference("Users");
 
-        // SharedPreference
-        //preferences=getSharedPreferences("autologin", Activity.MODE_PRIVATE);
-        //loginId=preferences.getString("inputId",null);
-        //loginPw=preferences.getString("inputPw",null);
+        //SharedPreference
+        preferences=getSharedPreferences("autologin", Activity.MODE_PRIVATE);
+        loginId=preferences.getString("inputId",null);
+        loginPw=preferences.getString("inputPw",null);
     }
 
     public void initAccount(){
@@ -131,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             showToast("로그인 성공");
-                            // setAutoLogin(email,pw);
+                            setAutoLogin(email,pw);
                             FirebaseUser user=mAuth.getCurrentUser();
                             updateUIwithEmailCheck(user);
                         }
@@ -154,22 +157,37 @@ public class LoginActivity extends AppCompatActivity {
         if(user!=null){
             boolean emailVerified=user.isEmailVerified();
             if(emailVerified){
-                mRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                mRef = mRef.child(user.getUid());
+                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        HashMap<String,Object> hashMap = (HashMap<String, Object>) snapshot.getValue();
+                        HashMap<String, Object> hashMap = (HashMap<String, Object>) snapshot.getValue();
                         ArrayList<String> category = (ArrayList<String>) hashMap.get("category");
-                        if(category!= null&&category.size()>0){
-                            Intent intent=new Intent(LoginActivity.this,DailyQuestionActivity.class);
+                        String day = (String) hashMap.get("day");
+                        if (category != null && category.size() > 0) {
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("MM월dd일");
+                            Date now = new Date();
+                            String today = dateFormat.format(now);
+                            if (day != null && day.equals(today)) {
+                                Intent intent = new Intent(LoginActivity.this, QuestionIndexActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                Intent intent = new Intent(LoginActivity.this, DailyQuestionActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        } else {
+                            Intent intent = new Intent(LoginActivity.this, CategorySettingActivity.class);
                             startActivity(intent);
                             finish();
+
                         }
-                        else{
-                            Intent intent=new Intent(LoginActivity.this,CategorySettingActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
+
+
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
