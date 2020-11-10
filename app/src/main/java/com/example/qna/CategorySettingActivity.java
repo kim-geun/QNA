@@ -44,6 +44,48 @@ public class CategorySettingActivity extends AppCompatActivity {
         final CheckBox chk_movie = (CheckBox)findViewById(R.id.chk_movie);
         final CheckBox chk_music = (CheckBox)findViewById(R.id.chk_music);
 
+        dataRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserData user = snapshot.getValue(UserData.class);
+               if(user.category != null){
+                   for(String category:user.category){
+                       switch (category) {
+                           case "love":
+                               chk_love.setChecked(true);
+                               break;
+
+                           case "etc":
+                               chk_etc.setChecked(true);
+                               break;
+
+                           case "relationship":
+                               chk_relationship.setChecked(true);
+                               break;
+
+                           case "sports":
+                               chk_sports.setChecked(true);
+                               break;
+
+                           case "movie":
+                               chk_movie.setChecked(true);
+                               break;
+
+                           case "music":
+                               chk_music.setChecked(true);
+                               break;
+                       }
+                   }
+               }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         Button b = (Button)findViewById(R.id.category_setting_submit);
 
@@ -83,6 +125,30 @@ public class CategorySettingActivity extends AppCompatActivity {
                 }
             }
         });
+
+        View.OnClickListener onClickListener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()){
+                    case R.id.chk_etc: case R.id.chk_love: case R.id.chk_movie:
+                    case R.id.chk_music: case R.id.chk_relationship: case R.id. chk_sports:
+                        boolean category_number = chk_etc.isChecked() | chk_love.isChecked() |
+                                chk_movie.isChecked() | chk_music.isChecked() |
+                                chk_relationship.isChecked() | chk_sports.isChecked();
+                        if(category_number == true)
+                            b.setBackgroundColor(getResources().getColor(R.color.red_dark));
+                        else
+                            b.setBackgroundColor(getResources().getColor(R.color.dark));
+                }
+            }
+        };
+
+        chk_etc.setOnClickListener(onClickListener);
+        chk_love.setOnClickListener(onClickListener);
+        chk_movie.setOnClickListener(onClickListener);
+        chk_music.setOnClickListener(onClickListener);
+        chk_relationship.setOnClickListener(onClickListener);
+        chk_sports.setOnClickListener(onClickListener);
     }
 
     // move to daily question activity
