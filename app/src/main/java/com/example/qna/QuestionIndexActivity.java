@@ -31,7 +31,7 @@ public class QuestionIndexActivity extends AppCompatActivity {
     QuestionIdxRVAdapter adapter;
     DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("Users");
     String uid = new String();
-    ArrayList<UserData.Question_list_data> question_list_data = new ArrayList<>();
+    ArrayList<Question_list_data> question_list_data = new ArrayList<>();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     UserData userData;
     @Override
@@ -59,7 +59,7 @@ public class QuestionIndexActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 question_list_data.clear();
                 for(DataSnapshot snap : snapshot.getChildren()){
-                    question_list_data.add(snap.getValue(UserData.Question_list_data.class));
+                    question_list_data.add(snap.getValue(Question_list_data.class));
                 }
                 adapter.notifyDataSetChanged();
             }

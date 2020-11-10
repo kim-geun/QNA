@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class QuestionIdxRVAdapter extends RecyclerView.Adapter<QuestionIdxRVAdapter.ViewHolder> {
-    ArrayList<UserData.Question_list_data> questionDataList;
+    ArrayList<Question_list_data> questionDataList;
     OnItemClickListener mlistener;
-    public QuestionIdxRVAdapter(ArrayList<UserData.Question_list_data> questionDataList) {
+    public QuestionIdxRVAdapter(ArrayList<Question_list_data> questionDataList) {
         this.questionDataList = questionDataList;
     }
     interface OnItemClickListener{
