@@ -41,6 +41,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/dovemayo"
         android:gravity="center_vertical"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:text="내용"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
