@@ -75,8 +75,6 @@ public class CategorySettingActivity extends AppCompatActivity {
 
                         }
                     });
-                    Intent intent = new Intent(CategorySettingActivity.this, DailyQuestionActivity.class);
-                    startActivity(intent);
                 }
             }
         });
