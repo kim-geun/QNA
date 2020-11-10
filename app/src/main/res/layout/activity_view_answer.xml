@@ -30,7 +30,6 @@
                 android:textSize="20dp"
                 android:gravity="left"
                 android:layout_weight="1"
-                android:textStyle="bold"
                 android:text="날짜"/>
 
 
@@ -42,11 +41,8 @@
                 android:gravity="right"
                 android:layout_weight="1"
                 android:text="카테고리"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="20dp" />
         </LinearLayout>
-
-
 
         <TextView
             android:layout_width="330dp"
@@ -55,7 +51,6 @@
             android:fontFamily="@font/dovemayo"
             android:layout_marginTop="10dp"
             android:textSize="24dp"
-            android:textStyle="bold"
             android:text="질문"/>
 
         <TextView
@@ -66,7 +61,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/dovemayo"
             android:padding="15dp"
-            android:textSize="30dp"
+            android:textSize="21dp"
             android:background="@color/very_light"
             android:textAlignment="center"/>
 
@@ -85,9 +80,7 @@
                 android:fontFamily="@font/dovemayo"
                 android:textSize="30dp"
                 android:backgroundTint="@color/dark"
-                android:text="목록"
-                android:textStyle="bold"/>
-
+                android:text="목록"/>
         </LinearLayout>
     </LinearLayout>
 
