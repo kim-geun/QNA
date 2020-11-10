@@ -76,12 +76,14 @@ public class DailyQuestionActivity extends AppCompatActivity {
                         Date now = new Date();
                         SimpleDateFormat dateformat = new SimpleDateFormat("MM월dd일");
                         date.setText(dateformat.format(now));
+                        
                         submit.setOnClickListener(new View.OnClickListener() {// 제출 버튼 클릭
                             @Override
                             public void onClick(View view) {
                                 String ansText = answer.getText().toString();
                                 if(!ansText.isEmpty()) {
                                     userData.addNewAnswer(questionData, ansText, date.getText().toString());
+                                    userData.setDay(dateformat.format(now));
                                     userRef.child(uid).updateChildren(userData.toMap());
                                     Intent intent = new Intent(DailyQuestionActivity.this, QuestionResultActivity.class);
                                     startActivity(intent);

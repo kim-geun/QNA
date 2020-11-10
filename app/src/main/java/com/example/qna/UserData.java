@@ -11,21 +11,31 @@ public class UserData{ //UID로 구분 in firebase
     public String uid;
     public ArrayList<String> category;
     public ArrayList<Question_list_data> dailyAnswer; // << Question Category, Question answer, Question date > , Answer>
+    public String day;
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
     public  UserData(){
         this.uid = new String();
         category = new ArrayList();
         dailyAnswer = new ArrayList<>();
-
+        day = new String();
     }
     public UserData(String UID) {
         this.uid = UID;
         category = new ArrayList();
         dailyAnswer = new ArrayList();
     }
-    public UserData(String UID,ArrayList<String> category) {
+    public UserData(String UID,ArrayList<String> category,String day) {
         this.uid = UID;
         this.category = category;
         this.dailyAnswer = new ArrayList();
+        this.day = day;
     }
     public void updateCategory(ArrayList<String> newCategory){ // 유저 카테고리 업데이트
         category.clear();
