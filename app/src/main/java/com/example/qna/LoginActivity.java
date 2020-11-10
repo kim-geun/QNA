@@ -43,10 +43,10 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mRef;
 
     // If auto-login is needed
-    private SharedPreferences preferences;
+    private SharedPreferences auto;
 
     // variables
-    private String loginId=null,loginPw=null;
+    private String loginID=null,loginPW=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,17 +65,18 @@ public class LoginActivity extends AppCompatActivity {
         mRef=mDatabase.getReference("Users");
 
         //SharedPreference
-        preferences=getSharedPreferences("autologin", Activity.MODE_PRIVATE);
-        loginId=preferences.getString("inputId",null);
-        loginPw=preferences.getString("inputPw",null);
+        auto=getSharedPreferences("autologin", Activity.MODE_PRIVATE);
+        loginID = auto.getString("inputId", null);
+        loginPW = auto.getString("inputPW", null);
     }
 
     public void initAccount(){
         if(mAuth.getCurrentUser()!=null){
-            mAuth.signOut();
+            FirebaseUser user=mAuth.getCurrentUser();
+            updateUIwithEmailCheck(user);
         }
-        else if (loginId != null && loginPw != null) {
-            // loginAccount(loginId, loginPw);
+        else if (loginID != null && loginPW != null) {
+            loginAccount(loginID, loginPW);
         }
     }
 
@@ -147,9 +148,9 @@ public class LoginActivity extends AppCompatActivity {
 
     // Auto Login Method
     private void setAutoLogin(String email,String pw){
-        SharedPreferences.Editor autoLogin=preferences.edit();
-        autoLogin.putString("inputId",email);
-        autoLogin.putString("inputPw",pw);
+        SharedPreferences.Editor autoLogin=auto.edit();
+        autoLogin.putString("inputId", email);
+        autoLogin.putString("inputPW", pw);
         autoLogin.commit();
     }
     //category reset & skip
