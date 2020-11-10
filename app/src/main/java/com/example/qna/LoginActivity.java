@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences preferences;
 
     // variables
-    private String loginId,loginPw;
+    private String loginId=null,loginPw=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

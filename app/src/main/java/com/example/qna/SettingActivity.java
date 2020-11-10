@@ -2,6 +2,7 @@ package com.example.qna;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -56,6 +57,7 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingActivity.this, CategorySettingActivity.class);
+                intent.putExtra("isSetting",1);
                 startActivity(intent);
             }
         });
@@ -76,7 +78,6 @@ public class SettingActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     showToast("회원 탈퇴 완료");
                     signOut();
-                    updateUI();
                 }
             }
         });
@@ -87,6 +88,7 @@ public class SettingActivity extends AppCompatActivity {
         editor.clear();
         editor.commit();
         mAuth.signOut();
+        updateUI();
     }
 
     public void showToast(String message){
@@ -95,5 +97,6 @@ public class SettingActivity extends AppCompatActivity {
 
     public void updateUI(){
         finish();
+        ActivityCompat.finishAffinity(this);
     }
 }

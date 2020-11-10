@@ -30,10 +30,16 @@ public class CategorySettingActivity extends AppCompatActivity {
     DatabaseReference dataRef;
     FirebaseUser auth;
     String uid;
+
+    private int isSetting=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_setting);
+
+        isSetting=getIntent().getIntExtra("isSetting",0);
+
         auth = FirebaseAuth.getInstance().getCurrentUser();
         uid = auth.getUid();
         dataRef = FirebaseDatabase.getInstance().getReference("Users");
@@ -113,7 +119,10 @@ public class CategorySettingActivity extends AppCompatActivity {
                             dataRef.child(uid).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    updateUI();
+                                    if(isSetting==1)
+                                        finish();
+                                    else
+                                        updateUI();
                                 }
                             });
                         }
