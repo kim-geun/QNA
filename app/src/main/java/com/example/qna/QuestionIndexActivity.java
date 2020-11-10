@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
@@ -34,6 +36,8 @@ public class QuestionIndexActivity extends AppCompatActivity {
     ArrayList<Question_list_data> question_list_data = new ArrayList<>();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     UserData userData;
+    ImageView setting_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +70,15 @@ public class QuestionIndexActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        setting_btn = findViewById(R.id.question_index_setting_btn);
+        setting_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuestionIndexActivity.this, SettingActivity.class);
+                startActivity(intent);
             }
         });
     }
