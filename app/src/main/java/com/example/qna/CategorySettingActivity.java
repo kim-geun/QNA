@@ -45,7 +45,7 @@ public class CategorySettingActivity extends AppCompatActivity {
         final CheckBox chk_music = (CheckBox)findViewById(R.id.chk_music);
 
 
-        Button b = (Button)findViewById(R.id.btn_submit);
+        Button b = (Button)findViewById(R.id.category_setting_submit);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
