@@ -33,11 +33,11 @@ import java.lang.reflect.Array;
 public class QuestionResultActivity extends AppCompatActivity {
 
     Spinner spinner;
-    LinearLayout recommendLayout;
-    TextView add_question_textview;
-    EditText recommend;
-    ImageButton toindex_button;
     Button submit;
+    ImageButton toindex_button;
+    TextView add_question_textview;
+    LinearLayout recommendLayout;
+    EditText recommend;
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
@@ -50,25 +50,30 @@ public class QuestionResultActivity extends AppCompatActivity {
         // Initialize Firebase variables
         initFirebase();
 
+        //목록으로 가기
+        toindex_button = findViewById(R.id.question_result_toindex);
+        toindex_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuestionResultActivity.this, QuestionIndexActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         //spinner
         spinner = findViewById(R.id.question_result_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.category)
-        );
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.category));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //스피너 객체에다가 어댑터 넣어주기
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             //선택되면
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) { }
             //아무것도 선택되지 않은 상태일 때
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) { }
         });
 
         //질문 추가
@@ -93,15 +98,6 @@ public class QuestionResultActivity extends AppCompatActivity {
             }
         });
 
-        toindex_button = findViewById(R.id.question_result_toindex);
-        toindex_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(QuestionResultActivity.this, QuestionIndexActivity.class);
-                startActivity(intent);
-            }
-        });
-
         submit = findViewById(R.id.question_result_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +110,7 @@ public class QuestionResultActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "추가할 질문을 입력하세요.", Toast.LENGTH_LONG).show();
                 } else {
                     //공백이 아닐 때 처리할 내용
-                    mRef.child("Question").child(category).addListenerForSingleValueEvent(new ValueEventListener() {
+                    mRef.child("Questions").child(category).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             long size = snapshot.getChildrenCount();
@@ -122,9 +118,7 @@ public class QuestionResultActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
+                        public void onCancelled(@NonNull DatabaseError error) { }
                     });
                 }
             }
@@ -134,7 +128,7 @@ public class QuestionResultActivity extends AppCompatActivity {
     public void addQuestion(String category, String context, long size){
         String id=String.valueOf(size + 1);
         QuestionData qdata=new QuestionData(id,category,context,0.0,0);
-        mRef.child("Question").child(category).child(id).setValue(qdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mRef.child("Questions").child(category).child(id).setValue(qdata).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(QuestionResultActivity.this,"추가 완료",Toast.LENGTH_SHORT).show();
