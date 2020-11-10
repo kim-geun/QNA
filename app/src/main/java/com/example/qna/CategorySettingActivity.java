@@ -58,7 +58,7 @@ public class CategorySettingActivity extends AppCompatActivity {
                 if(chk_movie.isChecked() == true) newCategory.add("movie");
                 if(chk_music.isChecked() == true) newCategory.add("music");
                 if(newCategory.size() == 0){
-                    showToast("카테고리를 1개 이상 선택하세요");
+                    Toast.makeText(getApplicationContext(),"카테고리를 1개 이상 선택하세요",Toast.LENGTH_LONG).show();
                 }
                 else{
                     dataRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -69,15 +69,8 @@ public class CategorySettingActivity extends AppCompatActivity {
                             Log.d("로그로그", String.join(",",newCategory));
                             user.updateCategory(newCategory);
                             dataRef.child(uid).removeValue();
-                            dataRef.child(uid).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    // Finish it when the data finally loaded
-                                    Intent intent = new Intent(CategorySettingActivity.this, DailyQuestionActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            });
+                            dataRef.child(uid).setValue(user);
+                            finish();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
@@ -89,28 +82,6 @@ public class CategorySettingActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
-    // do not allow to press back
-    @Override
-    public void onBackPressed() {
-        showToast("카테고리를 한 개 이상 선택해주세요");
-    }
-
-    public void showToast(String message){
-        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-    }
-
-    // If category not set, just finish to prevent bugs
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        finish();
     }
 }
