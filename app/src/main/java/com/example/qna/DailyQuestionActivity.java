@@ -71,7 +71,7 @@ public class DailyQuestionActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         questionData = snapshot.getValue(QuestionData.class);
                         category.setText(questionData.category);
-                        category_question.setText(questionData.context);
+                        category_question.setText("Q. "+questionData.context);
                         Date now = new Date();
                         SimpleDateFormat dateformat = new SimpleDateFormat("MM월dd일");
                         date.setText(dateformat.format(now));
