@@ -1,5 +1,6 @@
 package com.example.qna;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,8 +18,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -108,14 +114,32 @@ public class QuestionResultActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "추가할 질문을 입력하세요.", Toast.LENGTH_LONG).show();
                 } else {
                     //공백이 아닐 때 처리할 내용
-                    addQuestion();
+                    mRef.child("Question").child(category).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            long size = snapshot.getChildrenCount();
+                            addQuestion(category, recommend_string,size);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             }
         });
     }
 
-    public void addQuestion(){
-
+    public void addQuestion(String category, String context, long size){
+        String id=String.valueOf(size + 1);
+        QuestionData qdata=new QuestionData(id,category,context,0.0,0);
+        mRef.child("Question").child(category).child(id).setValue(qdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(QuestionResultActivity.this,"추가 완료",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void initFirebase(){

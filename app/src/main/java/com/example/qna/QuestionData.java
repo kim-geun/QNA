@@ -76,4 +76,44 @@ public class QuestionData implements Serializable {
             default: return "null";
         }
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    public double getStarRate() {
+        return starRate;
+    }
+
+    public void setStarRate(double starRate) {
+        this.starRate = starRate;
+    }
+
+    public int getRateNum() {
+        return rateNum;
+    }
+
+    public void setRateNum(int rateNum) {
+        this.rateNum = rateNum;
+    }
 }
