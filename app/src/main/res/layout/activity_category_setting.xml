@@ -8,7 +8,6 @@
     android:gravity="center"
     android:background="#ffffff">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -200,7 +199,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="음악"
+                android:text="영화TV"
                 android:fontFamily="@font/dovemayo"
                 android:textSize="22dp"
                 android:layout_gravity="center"/>

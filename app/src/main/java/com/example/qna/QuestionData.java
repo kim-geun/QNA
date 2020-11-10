@@ -68,7 +68,7 @@ public class QuestionData implements Serializable {
             case "sports": return "운동건강";
             case "relationship": return "인간관계";
             case "music": return "음악";
-            case "movie": return "영화";
+            case "movie": return "영화TV";
             default: return "null";
         }
     }
