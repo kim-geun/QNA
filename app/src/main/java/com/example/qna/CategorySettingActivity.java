@@ -1,9 +1,11 @@
 package com.example.qna;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -58,10 +60,11 @@ public class CategorySettingActivity extends AppCompatActivity {
                 }
                 else{
                     dataRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.O)
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             UserData user = snapshot.getValue(UserData.class);
-                            Log.d("로그로그", String.valueOf(user!=null));
+                            Log.d("로그로그", String.join(",",newCategory));
                             user.updateCategory(newCategory);
                             dataRef.child(uid).removeValue();
                             dataRef.child(uid).setValue(user);
