@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,7 +59,8 @@ public class DailyQuestionActivity extends AppCompatActivity {
                 userData = snapshot.getValue(UserData.class);
                 if(userData.dailyAnswer !=null&&userData.dailyAnswer.size()>0){
                     q_num = userData.dailyAnswer.size() + 1;
-                    q_num %= 10; // 질문 수가 10개라서 일단 이렇게 함
+                    if(q_num>9) q_num = q_num%10 +1 ; // 질문 수가 10개라서 일단 이렇게 함
+
                 }
                 else{
                     q_num = 1; // 아무것도 없으면 1번 질문;
@@ -76,7 +78,6 @@ public class DailyQuestionActivity extends AppCompatActivity {
                         Date now = new Date();
                         SimpleDateFormat dateformat = new SimpleDateFormat("MM월dd일");
                         date.setText(dateformat.format(now));
-                        
                         submit.setOnClickListener(new View.OnClickListener() {// 제출 버튼 클릭
                             @Override
                             public void onClick(View view) {
