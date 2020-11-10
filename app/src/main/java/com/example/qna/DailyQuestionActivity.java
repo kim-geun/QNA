@@ -85,6 +85,7 @@ public class DailyQuestionActivity extends AppCompatActivity {
                                     userRef.child(uid).updateChildren(userData.toMap());
                                     Intent intent = new Intent(DailyQuestionActivity.this, QuestionResultActivity.class);
                                     startActivity(intent);
+                                    finish();
                                 }
                                 else {
                                     Toast.makeText(DailyQuestionActivity.this, "답변을 작성해 주세요", Toast.LENGTH_LONG).show();
