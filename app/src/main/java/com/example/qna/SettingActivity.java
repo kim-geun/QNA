@@ -96,7 +96,8 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     public void updateUI(){
-        finish();
-        ActivityCompat.finishAffinity(this);
+        Intent intent=new Intent(SettingActivity.this,LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }
