@@ -33,6 +33,7 @@ public class QuestionIndexActivity extends AppCompatActivity {
     String uid = new String();
     ArrayList<UserData.Question_list_data> question_list_data = new ArrayList<>();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    UserData userData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +45,11 @@ public class QuestionIndexActivity extends AppCompatActivity {
         adapter = new QuestionIdxRVAdapter(question_list_data);
         adapter.setOnItemClickListener(new QuestionIdxRVAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-//              Intent itemIntent = new Intent(this,DailyQuestionActivity.class);
-                //itemIntent.putExtra("QuestionData", userData.dailyAnswer.get(position).questionData);
-             // startActivity(itemIntent);
+            public void onItemClick(View view, int position) {//클릭시
+             Intent itemIntent = new Intent(QuestionIndexActivity.this,ViewAnswerActivity.class);
+             itemIntent.putExtra("QuestionData", question_list_data.get(position));
+             //대답 전달
+             startActivity(itemIntent);
             }
         });
         recyclerView.setLayoutManager(layoutManager);

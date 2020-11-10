@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -64,7 +65,7 @@ public class DailyQuestionActivity extends AppCompatActivity {
                 int category_num = userData.category.size() - 1;
                 Random random = new Random();
                 random.setSeed(System.currentTimeMillis()); // 랜덤 시드
-                int category_selected = random.nextInt(category_num);
+                int category_selected = category_num==1? 0:random.nextInt(category_num);
                 dataRef.child(QuestionData.eToK(userData.category.get(category_selected))).child(Integer.toString(q_num)).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -73,6 +74,21 @@ public class DailyQuestionActivity extends AppCompatActivity {
                         Date now = new Date();
                         SimpleDateFormat dateformat = new SimpleDateFormat("MM월dd일");
                         date.setText(dateformat.format(now));
+                        submit.setOnClickListener(new View.OnClickListener() {// 제출 버튼 클릭
+                            @Override
+                            public void onClick(View view) {
+                                String ansText = answer.getText().toString();
+                                if(!ansText.isEmpty()) {
+                                    userData.addNewAnswer(questionData, ansText, date.getText().toString());
+                                    userRef.child(uid).updateChildren(userData.toMap());
+                                    Intent intent = new Intent(DailyQuestionActivity.this, QuestionResultActivity.class);
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Toast.makeText(DailyQuestionActivity.this, "답변을 작성해 주세요", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -95,12 +111,6 @@ public class DailyQuestionActivity extends AppCompatActivity {
             }
         });
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DailyQuestionActivity.this, QuestionResultActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 }

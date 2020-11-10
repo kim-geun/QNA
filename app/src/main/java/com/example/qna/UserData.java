@@ -4,6 +4,8 @@ import android.util.Pair;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserData{ //UID로 구분 in firebase
     public String uid;
@@ -12,7 +14,7 @@ public class UserData{ //UID로 구분 in firebase
     public  UserData(){
         this.uid = new String();
         category = new ArrayList();
-        dailyAnswer = new ArrayList();
+        dailyAnswer = new ArrayList<>();
 
     }
     public UserData(String UID) {
@@ -38,17 +40,52 @@ public class UserData{ //UID로 구분 in firebase
     public void addNewAnswer(QuestionData questionData, String answer, String date){ // 새로운 답변을 했을 때 데이터 추가 (질문,답변,날짜)
         dailyAnswer.add(new Question_list_data(questionData,answer,date));
     }
+    public Map<String,Object> toMap(){
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("uid",uid);
+        hashMap.put("category",category);
+        hashMap.put("dailyAnswer",dailyAnswer);
+        return hashMap;
+    }
 
-
-    class Question_list_data implements Serializable{ // list wrapper 용 데이터
+    public class Question_list_data implements Serializable{ // list wrapper 용 데이터
         QuestionData questionData;
         String answer;
         String date;
+        public Question_list_data(){
+            questionData = new QuestionData();
+            answer = new String();
+            date = new String();
+        }
         public Question_list_data(QuestionData questionData, String answer, String date) {
             this.questionData = questionData;
             this.answer = answer;
             this.date = date;
         }
+        public QuestionData getQuestionData() {
+            return questionData;
+        }
+
+        public void setQuestionData(QuestionData questionData) {
+            this.questionData = questionData;
+        }
+
+        public String getAnswer() {
+            return answer;
+        }
+
+        public void setAnswer(String answer) {
+            this.answer = answer;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
     }
 }
 

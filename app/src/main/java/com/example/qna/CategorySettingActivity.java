@@ -68,6 +68,8 @@ public class CategorySettingActivity extends AppCompatActivity {
                             user.updateCategory(newCategory);
                             dataRef.child(uid).removeValue();
                             dataRef.child(uid).setValue(user);
+                            Intent dailyQuestion = new Intent(CategorySettingActivity.this,DailyQuestionActivity.class);
+                            startActivity(dailyQuestion);
                             finish();
                         }
                         @Override
