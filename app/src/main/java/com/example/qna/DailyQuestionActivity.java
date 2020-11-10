@@ -28,7 +28,7 @@ import java.util.logging.SimpleFormatter;
 public class DailyQuestionActivity extends AppCompatActivity {
 
     Button toIndex, submit;
-    TextView date,category_question;
+    TextView date,category_question,category;
     EditText answer;
     DatabaseReference dataRef;
     DatabaseReference userRef;
@@ -43,6 +43,7 @@ public class DailyQuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daily_question);
         date = findViewById(R.id.daily_question_date);
         category_question = findViewById(R.id.daily_question_question);
+        category = findViewById(R.id.daily_question_category);
         answer = findViewById(R.id.daily_question_answer);
         toIndex = findViewById(R.id.daily_question_toindex);
         submit  = findViewById(R.id.daily_question_submit);
@@ -70,7 +71,8 @@ public class DailyQuestionActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         questionData = snapshot.getValue(QuestionData.class);
-                        category_question.setText(questionData.category+"/"+questionData.context);
+                        category.setText(questionData.category);
+                        category_question.setText(questionData.context);
                         Date now = new Date();
                         SimpleDateFormat dateformat = new SimpleDateFormat("MM월dd일");
                         date.setText(dateformat.format(now));
