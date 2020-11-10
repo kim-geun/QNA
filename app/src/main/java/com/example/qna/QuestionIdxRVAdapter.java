@@ -39,7 +39,7 @@ public class QuestionIdxRVAdapter extends RecyclerView.Adapter<QuestionIdxRVAdap
 
         holder.category.setText(String.join("/",questionDataList.get(position).questionData.category));
         holder.date.setText(questionDataList.get(position).date);
-        holder.context.setText(questionDataList.get(position).questionData.context);
+        holder.context.setText("Q. "+questionDataList.get(position).questionData.context);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

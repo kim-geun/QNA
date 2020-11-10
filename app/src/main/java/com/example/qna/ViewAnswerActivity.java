@@ -42,7 +42,7 @@ public class ViewAnswerActivity extends AppCompatActivity {
         textCategory=(TextView)findViewById(R.id.view_answer_category);
 
         textDate.setText(data.getDate());
-        textQuestion.setText(data.getQuestionData().context);
+        textQuestion.setText("Q. "+data.getQuestionData().context);
         textAnswer.setText(data.getAnswer());
         textCategory.setText(data.getQuestionData().category);
 

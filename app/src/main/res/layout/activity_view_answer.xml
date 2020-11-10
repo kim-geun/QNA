@@ -50,7 +50,7 @@
             android:id="@+id/view_answer_question"
             android:fontFamily="@font/dovemayo"
             android:layout_marginTop="10dp"
-            android:textSize="24dp"
+            android:textSize="26dp"
             android:text="질문"/>
 
         <TextView
@@ -61,7 +61,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/dovemayo"
             android:padding="15dp"
-            android:textSize="21dp"
+            android:textSize="23dp"
             android:background="@color/very_light"
             android:textAlignment="center"/>
 
